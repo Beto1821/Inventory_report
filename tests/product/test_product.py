@@ -12,6 +12,7 @@ def test_cria_produto():
     numero_de_serie = "GT74 LHWJ FCXL JNQT ZCXM 4761 GWSP"
     instrucoes_de_armazenamento = "instrucao 9"
 
+    # import Product
     produto = Product(
         id,
         nome_do_produto,
