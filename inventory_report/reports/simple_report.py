@@ -3,7 +3,7 @@ from datetime import datetime
 
 class SimpleReport:
     @staticmethod
-    def generate(products):
+    def generate(products: list[dict]):
         # Calcula a data de fabricação mais antiga
         oldest_date = min(
             [
@@ -32,6 +32,8 @@ class SimpleReport:
                 companies[p["nome_da_empresa"]] += 1
             else:
                 companies[p["nome_da_empresa"]] = 1
+        # função max =>
+        # https://cienciaprogramada.com.br/2022/04/funcao-max-em-python
         most_products_company = max(companies, key=companies.get)
 
         # Retorna o relatório
