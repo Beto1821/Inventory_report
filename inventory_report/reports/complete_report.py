@@ -22,7 +22,7 @@ class CompleteReport(SimpleReport):
         products_by_company = Counter(company)
         # print(products_by_company)
 
-        # saida
+        #  saida
         report = f"Data de fabricação mais antiga: {oldest_fabrication_date}\n"
         report += f"Data de validade mais próxima: {closest_expiration_date}\n"
         report += f"Empresa com mais produtos: {company_with_most_products}\n"
