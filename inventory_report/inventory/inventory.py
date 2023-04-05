@@ -1,26 +1,22 @@
-from inventory_report.reports.simple_report import SimpleReport
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.complete_report import CompleteReport
-import csv
-import json
+
+from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
     @staticmethod
-    def import_data(file_path: str, report_type: str):
-        # Ler arquivo CSV ou JSON e armazenar dados em uma lista de dicionários
+    def import_data(file_path: str, type: str):
         if file_path.endswith(".csv"):
-            with open(file_path) as csvfile:
-                reader = csv.DictReader(csvfile)
-                products = [row for row in reader]
+            data = CsvImporter.import_data(file_path)
         elif file_path.endswith(".json"):
-            with open(file_path) as jsonfile:
-                products = json.load(jsonfile)
+            data = JsonImporter.import_data(file_path)
         else:
-            raise ValueError("Formato de arquivo inválido")
-        # Gerar relatório correspondente ao tipo informado
-        if report_type == "simples":
-            return SimpleReport.generate(products)
-        elif report_type == "completo":
-            return CompleteReport.generate(products)
+            data = XmlImporter.import_data(file_path)
+
+        if type == "simples":
+            return SimpleReport.generate(data)
         else:
-            raise ValueError("Tipo de relatório inválido")
+            return CompleteReport.generate(data)
