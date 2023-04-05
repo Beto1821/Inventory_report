@@ -11,4 +11,4 @@ class CsvImporter(Importer):
                 products = [row for row in reader]
                 return products
         else:
-            raise ValueError("Formato de arquivo inválido")
+            raise ValueError("Arquivo inválido")
