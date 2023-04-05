@@ -5,25 +5,18 @@ class SimpleReport:
     @staticmethod
     def generate(products: list[dict]):
         # Calcula a data de fabricação mais antiga
-        oldest_date = min(
-            [
-                datetime.strptime(p["data_de_fabricacao"], "%Y-%m-%d")
-                for p in products
-            ]
-        )
-        oldest_date = datetime.strftime(oldest_date, "%Y-%m-%d")
+        oldest_date = min([p["data_de_fabricacao"] for p in products])
 
         # Calcula a data de validade mais próxima
         today = datetime.today().date()
         closest_date = min(
             [
-                datetime.strptime(p["data_de_validade"], "%Y-%m-%d").date()
+                p["data_de_validade"]
                 for p in products
                 if datetime.strptime(p["data_de_validade"], "%Y-%m-%d").date()
                 >= today
             ]
         )
-        closest_date = datetime.strftime(closest_date, "%Y-%m-%d")
 
         # Calcula a empresa com mais produtos
         companies = {}
