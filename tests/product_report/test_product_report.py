@@ -2,7 +2,7 @@ from inventory_report.inventory.product import Product
 
 
 # Este código implementa um teste unitário da classe Product
-#  que verifica se o método str está retornando o resultado esperado
+#  que verifica se o método __repr__ está retornando o resultado esperado
 #  para um objeto de exemplo.
 def test_relatorio_produto():
     product = Product(
